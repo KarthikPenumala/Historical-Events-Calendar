@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Events Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Historical Events Calendar</h1>
+            <div class="time-controls">
+                <div class="era-selection">
+                    <select id="era-selector">
+                        <option value="present">Present Era</option>
+                        <option value="ancient">Ancient History</option>
+                        <option value="prehistoric">Prehistoric Era</option>
+                        <option value="geological">Geological Time</option>
+                        <option value="cosmic">Cosmic Events</option>
+                    </select>
+                </div>
+                <div class="year-navigation">
+                    <button id="prev-year" class="nav-btn year-btn">&#10094;&#10094;</button>
+                    <input type="number" id="year-input" min="-13800000000" max="2100" value="2023">
+                    <button id="next-year" class="nav-btn year-btn">&#10095;&#10095;</button>
+                </div>
+                <div class="month-navigation">
+                    <button id="prev-month" class="nav-btn">&#10094;</button>
+                    <h2 id="month-year">January 2023</h2>
+                    <button id="next-month" class="nav-btn">&#10095;</button>
+                </div>
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <div class="calendar-section">
+                <div class="calendar">
+                    <div class="weekdays">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div id="calendar-days" class="days">
+                        <!-- Days will be inserted here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="tab-container">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="news">News</button>
+                        <button class="tab-btn" data-tab="festivals">Festivals & Events</button>
+                        <button class="tab-btn" data-tab="notes">My Notes</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div id="news" class="tab-pane active">
+                            <div class="news-filter">
+                                <select id="news-category">
+                                    <option value="general">General</option>
+                                    <option value="india">India</option>
+                                    <option value="business">Business</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="sports">Sports</option>
+                                    <option value="entertainment">Entertainment</option>
+                                    <option value="science">Science</option>
+                                    <option value="health">Health</option>
+                                </select>
+                                <button id="refresh-news"><i class="fas fa-sync-alt"></i></button>
+                            </div>
+                            <div id="news-container" class="news-list">
+                                <!-- News items will be inserted here by JavaScript -->
+                                <div class="loading-spinner">Loading news...</div>
+                            </div>
+                        </div>
+                        
+                        <div id="festivals" class="tab-pane">
+                            <div class="festivals-header">
+                                <h3>Today's Special</h3>
+                                <div class="date-selector">
+                                    <input type="date" id="festival-date">
+                                </div>
+                            </div>
+                            <div id="festivals-container">
+                                <!-- Festivals and important days will be inserted here -->
+                            </div>
+                        </div>
+                        
+                        <div id="notes" class="tab-pane">
+                            <div class="notes-header">
+                                <h3>Personal Events</h3>
+                                <button id="add-note-btn" class="add-btn"><i class="fas fa-plus"></i> Add Event</button>
+                            </div>
+                            <div class="notes-filter">
+                                <button class="filter-btn active" data-filter="all">All</button>
+                                <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+                                <button class="filter-btn" data-filter="finished">Finished</button>
+                            </div>
+                            <div id="notes-container">
+                                <!-- Personal notes will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="event-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h3 id="event-date">Events on <span id="selected-date"></span></h3>
+                <div id="event-list">
+                    <!-- Events will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Add Note Modal -->
+        <div id="add-note-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-note-btn close-btn">&times;</span>
+                <h3>Add Personal Event</h3>
+                <form id="note-form">
+                    <div class="form-group">
+                        <label for="note-title">Title</label>
+                        <input type="text" id="note-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="note-date">Date</label>
+                        <input type="date" id="note-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="note-time">Time</label>
+                        <input type="time" id="note-time">
+                    </div>
+                    <div class="form-group">
+                        <label for="note-priority">Priority</label>
+                        <select id="note-priority">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="note-description">Description</label>
+                        <textarea id="note-description" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="save-note-btn">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="loading.js"></script>
+    <script src="script.js"></script>
+    <script src="sounds.js"></script>
+    <script src="particles.js"></script>
+</body>
+</html>

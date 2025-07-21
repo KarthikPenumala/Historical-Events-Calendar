@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Host Your Calendar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0a1929 0%, #0d2b4b 100%);
+            color: #e0f2ff;
+            line-height: 1.6;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(13, 43, 75, 0.7);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(30, 136, 229, 0.3),
+                        0 0 40px rgba(30, 136, 229, 0.2),
+                        0 0 60px rgba(30, 136, 229, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 181, 246, 0.2);
+        }
+        h1 {
+            color: #29b6f6;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(41, 182, 246, 0.5);
+        }
+        h2 {
+            color: #64b5f6;
+            border-bottom: 1px solid rgba(100, 181, 246, 0.3);
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .hosting-option {
+            background-color: rgba(30, 136, 229, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(100, 181, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+        .hosting-option:hover {
+            background-color: rgba(30, 136, 229, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(30, 136, 229, 0.3);
+        }
+        .hosting-option h3 {
+            color: #29b6f6;
+            margin-top: 0;
+        }
+        .steps {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .steps li {
+            padding: 8px 0 8px 30px;
+            position: relative;
+        }
+        .steps li:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #64b5f6;
+        }
+        .btn {
+            display: inline-block;
+            background-color: rgba(41, 182, 246, 0.2);
+            color: #e0f2ff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            border: 1px solid rgba(41, 182, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background-color: rgba(41, 182, 246, 0.4);
+            box-shadow: 0 0 15px rgba(41, 182, 246, 0.5);
+        }
+        .note {
+            background-color: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        code {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        .back-btn {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Host Your Calendar Website</h1>
+        
+        <p>Your Historical Events Calendar is a static website built with HTML, CSS, and JavaScript. This means it can be hosted on many free platforms without requiring a server or database.</p>
+        
+        <div class="note">
+            <strong>Note:</strong> We've created a deployment script <code>deploy-to-github.bat</code> in your project folder to make GitHub Pages deployment easier.
+        </div>
+        
+        <h2>Hosting Options</h2>
+        
+        <div class="hosting-option">
+            <h3>1. GitHub Pages (Recommended)</h3>
+            <p>GitHub Pages is a free hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub.</p>
+            <ul class="steps">
+                <li>Create a GitHub account at <a href="https://github.com" target="_blank" class="btn">github.com</a></li>
+                <li>Create a new repository (e.g., "historical-events-calendar")</li>
+                <li>Upload all your project files to the repository</li>
+                <li>Go to repository Settings → Pages</li>
+                <li>Select "main" branch as the source and click Save</li>
+                <li>Your site will be published at <code>https://yourusername.github.io/repository-name/</code></li>
+            </ul>
+            <p><strong>Quick Deploy:</strong> Run the <code>deploy-to-github.bat</code> script in your project folder for guided deployment.</p>
+        </div>
+        
+        <div class="hosting-option">
+            <h3>2. Netlify</h3>
+            <p>Netlify offers free hosting with a simple drag-and-drop interface.</p>
+            <ul class="steps">
+                <li>Go to <a href="https://netlify.com" target="_blank" class="btn">netlify.com</a> and create an account</li>
+                <li>Click "New site from Git" or drag your project folder to the dashboard</li>
+                <li>Follow the prompts to deploy your site</li>
+                <li>Your site will be available at <code>your-site-name.netlify.app</code></li>
+            </ul>
+        </div>
+        
+        <div class="hosting-option">
+            <h3>3. Vercel</h3>
+            <p>Vercel provides fast and free hosting for static websites.</p>
+            <ul class="steps">
+                <li>Go to <a href="https://vercel.com" target="_blank" class="btn">vercel.com</a> and create an account</li>
+                <li>Click "New Project" and import your repository or upload files</li>
+                <li>Configure project settings (not needed for this static site)</li>
+                <li>Click "Deploy" and your site will be live at <code>your-site-name.vercel.app</code></li>
+            </ul>
+        </div>
+        
+        <div class="hosting-option">
+            <h3>4. Cloudflare Pages</h3>
+            <p>Cloudflare Pages offers fast, secure hosting with global CDN.</p>
+            <ul class="steps">
+                <li>Create an account at <a href="https://cloudflare.com" target="_blank" class="btn">cloudflare.com</a></li>
+                <li>Go to the Pages section and click "Create a project"</li>
+                <li>Connect to your GitHub/GitLab account and select your repository</li>
+                <li>Your site will be available at <code>your-site-name.pages.dev</code></li>
+            </ul>
+        </div>
+        
+        <div class="hosting-option">
+            <h3>5. Static.app</h3>
+            <p>Static.app is a simple drag-and-drop hosting service for static websites.</p>
+            <ul class="steps">
+                <li>Go to <a href="https://static.app" target="_blank" class="btn">static.app</a></li>
+                <li>Drag and drop your project folder or upload a ZIP file</li>
+                <li>Choose a subdomain for your site</li>
+                <li>Your site will be live immediately</li>
+            </ul>
+        </div>
+        
+        <h2>Important Tips</h2>
+        
+        <div class="note">
+            <ul>
+                <li>Ensure all file paths in your HTML, CSS, and JavaScript files are relative</li>
+                <li>Test your site after deployment to ensure all features work correctly</li>
+                <li>If you have the <code>OpenCalendar.bat</code> file, update it to point to your new hosted URL</li>
+                <li>Keep your repository private if you have sensitive information in your code</li>
+            </ul>
+        </div>
+        
+        <a href="index.html" class="btn back-btn">Back to Calendar</a>
+    </div>
+</body>
+</html>
